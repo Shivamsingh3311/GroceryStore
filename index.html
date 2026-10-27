@@ -1,0 +1,150 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Shop fresh fruits, vegetables, dairy, snacks and daily groceries at FreshMart.">
+    <title>FreshMart | Fresh Groceries Delivered</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header class="header">
+    <a href="#" class="logo">🥬 Fresh<span>Mart</span></a>
+
+    <div class="search-box">
+        <span>🔍</span>
+        <input type="search" id="searchInput"
+               placeholder="Search fruits, vegetables, milk...">
+    </div>
+
+    <button class="cart-button" id="cartButton">
+        🛒 Cart <span id="cartCount">0</span>
+    </button>
+</header>
+
+<main>
+    <section class="hero">
+        <div class="hero-content">
+            <span class="eyebrow">🌱 FRESHNESS AT YOUR DOORSTEP</span>
+            <h1>Fresh groceries.<br>Happy <span>living.</span></h1>
+            <p>Farm-fresh produce and everyday essentials,
+               delivered straight to your home.</p>
+            <a href="#shop" class="primary-button">Shop groceries →</a>
+            <div class="hero-note">✓ Fresh quality &nbsp; ✓ Great prices</div>
+        </div>
+        <div class="hero-image" role="img" aria-label="Fresh fruits and vegetables">
+            <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=900&q=85"
+                 alt="Fresh colorful produce in a grocery market">
+            <div class="floating-card">
+                <span>🥑</span>
+                <div><strong>100% Fresh</strong><small>Goodness in every bite</small></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="benefits">
+        <div>🚚 <span><strong>Fast delivery</strong><small>At your doorstep</small></span></div>
+        <div>🥦 <span><strong>Fresh products</strong><small>Quality you can trust</small></span></div>
+        <div>💚 <span><strong>Fair prices</strong><small>Save on essentials</small></span></div>
+    </section>
+
+    <section class="shop-section" id="shop">
+        <div class="section-heading">
+            <div>
+                <span class="eyebrow">YOUR DAILY ESSENTIALS</span>
+                <h2>Shop groceries</h2>
+                <p>Everything you need, all in one place.</p>
+            </div>
+            <span class="product-total" id="productTotal">0 products</span>
+        </div>
+
+        <div class="categories" id="categoryButtons">
+            <button class="category active" data-category="All">🛍️ All items</button>
+            <button class="category" data-category="Fruits">🍎 Fruits</button>
+            <button class="category" data-category="Vegetables">🥦 Vegetables</button>
+            <button class="category" data-category="Dairy">🥛 Dairy</button>
+            <button class="category" data-category="Bakery">🍞 Bakery</button>
+            <button class="category" data-category="Snacks">🍪 Snacks</button>
+        </div>
+
+        <div class="products-grid" id="productsGrid"></div>
+    </section>
+
+    <section class="newsletter">
+        <div>
+            <span class="eyebrow">A LITTLE FRESHNESS IN YOUR INBOX</span>
+            <h2>Good food, good mood.</h2>
+            <p>Join our community for grocery tips and special offers.</p>
+        </div>
+        <form id="newsletterForm">
+            <input type="email" id="newsletterEmail"
+                   placeholder="Enter your email address" required>
+            <button type="submit">Join us →</button>
+        </form>
+    </section>
+</main>
+
+<footer class="footer">
+    <a href="#" class="logo">🥬 Fresh<span>Mart</span></a>
+    <p>Fresh choices for a happier everyday.</p>
+    <p>© <span id="year"></span> FreshMart. Made with 💚</p>
+</footer>
+
+<!-- Shopping cart drawer -->
+<div class="overlay" id="overlay"></div>
+
+<aside class="cart-drawer" id="cartDrawer" aria-label="Shopping cart">
+    <div class="cart-heading">
+        <div>
+            <span class="eyebrow">YOUR SELECTION</span>
+            <h2>Your cart 🛒</h2>
+        </div>
+        <button class="close-button" id="closeCart" aria-label="Close cart">✕</button>
+    </div>
+
+    <div class="cart-items" id="cartItems"></div>
+
+    <div class="cart-summary">
+        <div><span>Subtotal</span><strong id="subtotal">₹0</strong></div>
+        <div><span>Delivery</span><strong id="delivery">₹0</strong></div>
+        <div class="grand-total"><span>Total</span><strong id="grandTotal">₹0</strong></div>
+        <p class="delivery-note" id="deliveryNote">Add items to get started.</p>
+        <button class="checkout-button" id="checkoutButton">Proceed to checkout →</button>
+        <small class="demo-note">Demo checkout — no real payment is processed.</small>
+    </div>
+</aside>
+
+<!-- Demo checkout dialog -->
+<dialog id="checkoutDialog">
+    <form id="checkoutForm">
+        <button type="button" class="close-button dialog-close" id="closeCheckout">✕</button>
+        <span class="eyebrow">ALMOST THERE!</span>
+        <h2>Delivery details</h2>
+        <p class="dialog-description">Enter your details to place a demo order.</p>
+
+        <label for="customerName">Full name</label>
+        <input id="customerName" name="customerName" required placeholder="Your name">
+
+        <label for="customerPhone">Phone number</label>
+        <input id="customerPhone" name="customerPhone" type="tel"
+               pattern="[0-9]{10}" maxlength="10" required
+               placeholder="10-digit mobile number">
+
+        <label for="customerAddress">Delivery address</label>
+        <textarea id="customerAddress" name="customerAddress"
+                  required placeholder="House number, street, city"></textarea>
+
+        <div class="dialog-total">Order total <strong id="checkoutTotal">₹0</strong></div>
+        <button class="checkout-button" type="submit">Place demo order</button>
+    </form>
+</dialog>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
